@@ -5,8 +5,12 @@ from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
 from functools import wraps
+from flask_session import Session
+
+SESSION_TYPE = 'memcache'
 
 app = Flask(__name__)
+app.secret_key = b'\xc9\xe2\x1d=\xd6x\xdbQ\x84\xbf\t\xd1\xcfyNS'
 
 
 # Config MySQL
@@ -283,5 +287,9 @@ def delete_article(id):
 
 
 if __name__ == '__main__':
-    app.secret_key='secret123'
-    app.run(debug=True)
+    
+   app.config['SESSION_TYPE'] = 'filesystem'
+
+   sess.init_app(app)
+
+   app.run(debug=True)
