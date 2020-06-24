@@ -7,7 +7,7 @@ from passlib.hash import sha256_crypt
 from functools import wraps
 from flask_session import Session
 
-SESSION_TYPE = 'memcache'
+
 
 app = Flask(__name__)
 app.secret_key = b'\xc9\xe2\x1d=\xd6x\xdbQ\x84\xbf\t\xd1\xcfyNS'
